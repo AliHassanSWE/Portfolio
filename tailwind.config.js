@@ -12,11 +12,11 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-        background: '#0F0F11',
-        surface: '#161618',
-        border: '#27272A',
-        primary: '#E25A36', // Natural rust/orange theme
-        primaryLight: 'rgba(226, 90, 54, 0.15)',
+        background: '#02040A', /* Deep Dark Blue-Black */
+        surface: 'rgba(255, 255, 255, 0.03)', 
+        border: 'rgba(255, 255, 255, 0.08)',
+        cyan: '#00FFA3', /* Neon Green */
+        purple: '#0066FF', /* Deep Professional Blue */
       }
     },
   },

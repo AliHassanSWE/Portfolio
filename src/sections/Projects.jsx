@@ -1,3 +1,4 @@
+import Tilt from 'react-parallax-tilt';
 import { ArrowUpRight } from 'lucide-react';
 
 const projectData = [
@@ -26,60 +27,51 @@ const projectData = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto border-t border-border/40">
-      
-      {/* Top Header matching reference */}
-      <div className="flex flex-wrap items-center justify-between border-b border-border/60 pb-6 mb-12 gap-4">
+    <section id="projects" className="py-24 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto">
+      <div className="flex flex-wrap items-center justify-between border-b border-white/10 pb-6 mb-16 gap-4">
         <div className="flex items-center gap-6">
-          <div className="w-12 md:w-16 h-[1px] bg-primary"></div>
-          <h2 className="text-3xl md:text-4xl font-serif italic text-primary tracking-wide">Work</h2>
+          <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple to-cyan drop-shadow-[0_0_15px_rgba(0,255,163,0.5)]">Featured Projects</h2>
         </div>
-        <span className="font-mono text-xs md:text-sm text-gray-500 tracking-[0.2em] uppercase font-semibold">
-          03 Projects
-        </span>
       </div>
 
-      {/* Large Statement Text matching reference */}
-      <h3 className="text-3xl md:text-5xl lg:text-[54px] font-medium text-white mb-20 leading-[1.15] tracking-tight max-w-4xl">
-        Selected projects developed across software engineering, desktop applications, and web infrastructure.
-      </h3>
-      
-      {/* Project Rows */}
-      <div className="flex flex-col">
+      <div className="grid grid-cols-1 gap-10">
         {projectData.map((project, index) => (
-          <a 
-            key={index} 
-            href={project.link} 
-            target="_blank" 
-            rel="noreferrer"
-            className="group flex flex-col md:flex-row gap-6 md:gap-12 py-12 md:py-16 border-b border-border/40 hover:bg-surface/20 transition-all duration-500 px-4 md:px-8 -mx-4 md:-mx-8 rounded-2xl"
-          >
-            {/* Number */}
-            <div className="text-gray-500 font-mono text-sm md:text-base pt-1 md:w-12 shrink-0 font-medium">
-              {project.num}
-            </div>
-
-            {/* Content */}
-            <div className="flex-1">
-              <div className="flex justify-between items-start mb-6">
-                <h4 className="text-2xl md:text-4xl font-serif text-white group-hover:text-primary transition-colors duration-500 tracking-tight">
-                  {project.title}
-                </h4>
-                <ArrowUpRight size={28} className="text-gray-500 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 shrink-0 ml-4" />
-              </div>
+          <Tilt key={index} tiltMaxAngleX={2} tiltMaxAngleY={2} perspective={1000} scale={1.01} transitionSpeed={2000} className="w-full">
+            <a 
+              href={project.link} 
+              target="_blank" 
+              rel="noreferrer"
+              className="group flex flex-col md:flex-row gap-6 md:gap-12 p-8 md:p-12 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-cyan/50 backdrop-blur-xl transition-all duration-500 shadow-xl hover:shadow-[0_0_40px_rgba(0,255,163,0.15)] relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple/10 to-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               
-              <p className="text-gray-400 leading-relaxed mb-8 text-base md:text-lg max-w-3xl font-light">
-                {project.description}
-              </p>
-
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-x-6 gap-y-3 font-mono text-[11px] md:text-xs text-gray-500 tracking-[0.15em]">
-                {project.tech.map((tech, i) => (
-                  <span key={i} className="hover:text-gray-300 transition-colors">{tech}</span>
-                ))}
+              <div className="text-cyan font-mono text-2xl font-bold pt-1 md:w-16 shrink-0 drop-shadow-[0_0_10px_rgba(0,255,163,0.8)]">
+                {project.num}
               </div>
-            </div>
-          </a>
+
+              <div className="flex-1 z-10">
+                <div className="flex justify-between items-start mb-6">
+                  {/* Colorful Hover Title */}
+                  <h4 className="text-2xl md:text-4xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan group-hover:to-purple transition-all duration-500 tracking-tight">
+                    {project.title}
+                  </h4>
+                  <ArrowUpRight size={32} className="text-white/30 group-hover:text-cyan group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500 shrink-0 ml-4 drop-shadow-[0_0_10px_rgba(0,255,163,0.5)]" />
+                </div>
+                
+                <p className="text-gray-300 leading-relaxed mb-8 text-base md:text-lg max-w-3xl font-light">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-x-4 gap-y-3 font-mono text-[11px] md:text-xs text-white/70 tracking-widest">
+                  {project.tech.map((tech, i) => (
+                    <span key={i} className="px-4 py-1.5 rounded-full border border-white/20 bg-black/40 group-hover:border-cyan/40 group-hover:text-cyan group-hover:shadow-[0_0_10px_rgba(0,255,163,0.2)] transition-all">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          </Tilt>
         ))}
       </div>
     </section>

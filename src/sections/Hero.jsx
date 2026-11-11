@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Globe } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const GithubIcon = ({ size = 20 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 9 18v4"></path></svg>
@@ -26,52 +26,30 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
-    }
-  };
-
   const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center pt-20 px-6 lg:px-12 max-w-5xl mx-auto">
-      <motion.div variants={containerVariants} initial="hidden" animate="show">
+    <section id="home" className="min-h-screen flex flex-col justify-center pt-24 px-6 lg:px-12 max-w-5xl mx-auto">
+      <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.2 } } }}>
         
-        <motion.div variants={itemVariants} className="flex items-center gap-6 mb-8">
-          <div className="w-24 h-24 rounded-full bg-surface border border-border overflow-hidden relative shadow-[0_0_30px_rgba(226,90,54,0.15)] flex items-center justify-center">
-            <span className="text-3xl font-serif text-gray-500">AH</span>
-          </div>
-          <div>
-            <h1 className="text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight">Ali Hassan</h1>
-            <p className="text-gray-400 text-sm tracking-widest uppercase font-mono mb-3">
-              Computer Science Student | Software Developer
-            </p>
-            <div className="flex items-center gap-3 text-xs font-mono text-gray-500 uppercase">
-              <span className="flex items-center gap-2 border border-border px-3 py-1 rounded-full text-gray-300 bg-surface">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span> Open to work
-              </span>
-              <span className="hidden sm:inline">Pakistan • PKT (UTC+5)</span>
-            </div>
-          </div>
-        </motion.div>
+        {/* Name with Glowing Gradient matching image */}
+        <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+          Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple drop-shadow-[0_0_15px_rgba(0,255,163,0.4)]">Ali Hassan.</span>
+        </motion.h1>
 
-        {/* Updated Heading Structure */}
+        {/* Info Text */}
+        <motion.p variants={itemVariants} className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-8">
+          I'm a <strong className="text-white">Computer Science Student</strong> and Software Developer who loves understanding how things work under the hood. Currently focused on building robust backend systems, data structures, and practical software solutions.
+        </motion.p>
+
+        {/* Animated Feature Text with Colors */}
         <motion.div variants={itemVariants} className="mb-12">
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-2 leading-[1.1] tracking-tight">
-            Building thoughtful,
-          </h2>
-          <div className="flex flex-wrap items-center text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
-            <span className="font-serif italic font-normal text-gray-300 mr-4 md:mr-6">
-              end-to-end
-            </span> 
-            {/* Added h-[1.2em] to reserve height and prevent button overlap */}
-            <span className="text-primary relative inline-block h-[1.2em] w-[300px] md:w-[450px]">
+          <div className="flex flex-wrap items-center text-3xl md:text-5xl font-bold leading-[1.2] tracking-tight">
+            <span className="text-gray-400 mr-3">Building</span> 
+            <span className="text-primary relative inline-block h-[1.2em] w-[250px] md:w-[350px]">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={index}
@@ -79,7 +57,7 @@ const Hero = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -25, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="absolute left-0 top-0"
+                  className="absolute left-0 top-0 text-transparent bg-clip-text bg-gradient-to-r from-purple to-cyan drop-shadow-[0_0_10px_rgba(0,255,163,0.5)]"
                 >
                   {words[index]}
                 </motion.span>
@@ -88,18 +66,20 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mt-4">
-          <a href="#contact" className="flex items-center gap-2 bg-primary hover:bg-orange-700 text-white px-7 py-3 rounded-md font-medium transition-all shadow-lg shadow-primary/20">
-            <Mail size={18} /> Get in touch
+        {/* Buttons matching the image style */}
+        <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 mt-4">
+          <a href="#projects" className="flex items-center gap-2 bg-white hover:bg-gray-200 text-black px-8 py-3.5 rounded-xl font-semibold transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            View Projects <ArrowRight size={18} />
           </a>
-          <div className="flex items-center gap-4 border-l border-border pl-4 ml-2">
-            <a href="https://github.com/AliHassanSWE" target="_blank" rel="noreferrer" className="p-3 border border-border rounded-md text-gray-400 hover:text-white hover:border-gray-500 transition-colors bg-surface">
+          
+          <div className="flex items-center gap-3">
+            <a href="https://github.com/AliHassanSWE" target="_blank" rel="noreferrer" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-cyan hover:border-cyan hover:bg-cyan/10 transition-all bg-white/5 backdrop-blur-sm">
               <GithubIcon size={20} />
             </a>
-            <a href="https://wa.me/923497462724" target="_blank" rel="noreferrer" className="p-3 border border-border rounded-md text-gray-400 hover:text-white hover:border-green-500 transition-colors bg-surface">
+            <a href="https://wa.me/923497462724" target="_blank" rel="noreferrer" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-green-400 hover:border-green-400 hover:bg-green-400/10 transition-all bg-white/5 backdrop-blur-sm">
               <WhatsAppIcon size={20} />
             </a>
-            <a href="#" className="p-3 border border-border rounded-md text-gray-400 hover:text-white hover:border-gray-500 transition-colors bg-surface">
+            <a href="#" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-purple hover:border-purple hover:bg-purple/10 transition-all bg-white/5 backdrop-blur-sm">
               <LinkedinIcon size={20} />
             </a>
           </div>

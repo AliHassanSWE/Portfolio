@@ -6,8 +6,8 @@
 
 html {
   scroll-behavior: smooth;
-  /* This prevents the page from hiding under the fixed border */
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  cursor: none; 
 }
 
 *, *:before, *:after {
@@ -15,10 +15,30 @@ html {
 }
 
 body {
-  background-color: #0F0F11;
+  background-color: #02040A; 
+  /* Blue and Green ambient background mesh glows */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(0, 102, 255, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(0, 255, 163, 0.12) 0%, transparent 40%);
+  background-attachment: fixed;
   color: #E5E7EB;
   font-family: 'Inter', sans-serif;
-  /* These two lines make the font look incredibly premium and sharp */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a, button, input, textarea {
+  cursor: none !important;
+}
+
+/* Liquid Mesh Animation */
+@keyframes meshMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-mesh {
+  animation: meshMove 15s ease infinite;
 }
