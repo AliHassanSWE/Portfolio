@@ -4,11 +4,42 @@ import { Mail, Phone, MapPin, Copy, CheckCircle2, Send, ExternalLink } from 'luc
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState(''); // '' | 'submitting' | 'success' | 'error'
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("hassammehmood1321090@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('submitting');
+    
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      // Using your specific Formspree endpoint
+      const response = await fetch("https://formspree.io/f/xoedjlaj", {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+        // Reset the success message back to normal after 5 seconds
+        setTimeout(() => setStatus(''), 5000);
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   return (
@@ -77,8 +108,8 @@ const Contact = () => {
           </a>
         </div>
 
-        {/* Right Side: Contact Form (Remains Exactly the Same) */}
-        <form className="flex flex-col gap-6 bg-white/[0.02] border border-white/10 p-8 rounded-3xl backdrop-blur-xl shadow-xl">
+        {/* Right Side: Working Contact Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 bg-white/[0.02] border border-white/10 p-8 rounded-3xl backdrop-blur-xl shadow-xl">
           <h3 className="text-2xl font-bold text-white mb-2">Send a Message</h3>
           
           <div className="flex flex-col gap-2">
@@ -86,6 +117,8 @@ const Contact = () => {
             <input 
               type="text" 
               id="name" 
+              name="name"
+              required
               placeholder="John Doe" 
               className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#00FFA3]/50 focus:ring-1 focus:ring-[#00FFA3]/50 transition-all"
             />
@@ -96,6 +129,8 @@ const Contact = () => {
             <input 
               type="email" 
               id="email" 
+              name="email"
+              required
               placeholder="john@example.com" 
               className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#00FFA3]/50 focus:ring-1 focus:ring-[#00FFA3]/50 transition-all"
             />
@@ -105,6 +140,8 @@ const Contact = () => {
             <label htmlFor="message" className="text-sm font-mono text-[#00FFA3]">Message</label>
             <textarea 
               id="message" 
+              name="message"
+              required
               rows="4" 
               placeholder="How can I help you?" 
               className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#00FFA3]/50 focus:ring-1 focus:ring-[#00FFA3]/50 transition-all resize-none"
@@ -112,11 +149,17 @@ const Contact = () => {
           </div>
 
           <button 
-            type="button" 
-            className="mt-2 flex items-center justify-center gap-2 w-full bg-gradient-to-r from-[#0066FF] to-[#00FFA3] text-black font-bold py-3.5 rounded-xl hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(0,255,163,0.3)]"
+            type="submit"
+            disabled={status === 'submitting'}
+            className="mt-2 flex items-center justify-center gap-2 w-full bg-gradient-to-r from-[#0066FF] to-[#00FFA3] text-black font-bold py-3.5 rounded-xl hover:opacity-90 transition-all shadow-[0_0_20px_rgba(0,255,163,0.3)] disabled:opacity-70"
           >
-            Send Message <Send size={18} />
+            {status === 'submitting' ? 'Sending...' : status === 'success' ? 'Sent!' : 'Send Message'}
+            {status === 'success' ? <CheckCircle2 size={18} /> : <Send size={18} />}
           </button>
+
+          {status === 'error' && (
+            <p className="text-red-400 text-center text-sm font-medium mt-1">Oops! Something went wrong. Please try again.</p>
+          )}
         </form>
 
       </div>
