@@ -33,20 +33,21 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center pt-24 px-6 lg:px-12 max-w-5xl mx-auto">
-      <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.2 } } }}>
-        
-        {/* Name with Glowing Gradient matching image */}
-        <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+    <section id="home" className="relative min-h-screen flex flex-col justify-center w-full overflow-hidden">
+      <motion.div 
+        className="max-w-5xl mx-auto w-full px-6 lg:px-12 relative z-10"
+        initial="hidden" 
+        animate="show" 
+        variants={{ show: { transition: { staggerChildren: 0.2 } } }}
+      >
+        <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight mt-24">
           Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple drop-shadow-[0_0_15px_rgba(0,255,163,0.4)]">Ali Hassan.</span>
         </motion.h1>
 
-        {/* Info Text replaced with Typewriter */}
-        <motion.p variants={itemVariants} className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-8">
+        <motion.div variants={itemVariants} className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-8 min-h-[80px]">
           <Typewriter text="I'm a Computer Science Student and Software Developer who loves understanding how things work under the hood. Currently focused on building robust backend systems, data structures, and practical software solutions." />
-        </motion.p>
+        </motion.div>
 
-        {/* Animated Feature Text with Colors */}
         <motion.div variants={itemVariants} className="mb-12">
           <div className="flex flex-wrap items-center text-3xl md:text-5xl font-bold leading-[1.2] tracking-tight">
             <span className="text-gray-400 mr-3">Building</span> 
@@ -67,25 +68,23 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Buttons matching the image style */}
         <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 mt-4">
           <a href="#projects" className="flex items-center gap-2 bg-white hover:bg-gray-200 text-black px-8 py-3.5 rounded-xl font-semibold transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             View Projects <ArrowRight size={18} />
           </a>
           
           <div className="flex items-center gap-3">
-            <a href="https://github.com/AliHassanSWE" target="_blank" rel="noreferrer" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-cyan hover:border-cyan hover:bg-cyan/10 transition-all bg-white/5 backdrop-blur-sm">
+            <a href="https://github.com/AliHassanSWE" target="_blank" rel="noreferrer" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-cyan hover:border-cyan hover:bg-cyan/10 transition-all bg-white/5 backdrop-blur-sm relative z-20">
               <GithubIcon size={20} />
             </a>
-            <a href="https://wa.me/923497462724" target="_blank" rel="noreferrer" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-green-400 hover:border-green-400 hover:bg-green-400/10 transition-all bg-white/5 backdrop-blur-sm">
+            <a href="https://wa.me/923497462724" target="_blank" rel="noreferrer" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-green-400 hover:border-green-400 hover:bg-green-400/10 transition-all bg-white/5 backdrop-blur-sm relative z-20">
               <WhatsAppIcon size={20} />
             </a>
-            <a href="#" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-purple hover:border-purple hover:bg-purple/10 transition-all bg-white/5 backdrop-blur-sm">
+            <a href="#" className="p-3.5 border border-white/20 rounded-xl text-gray-300 hover:text-purple hover:border-purple hover:bg-purple/10 transition-all bg-white/5 backdrop-blur-sm relative z-20">
               <LinkedinIcon size={20} />
             </a>
           </div>
         </motion.div>
-
       </motion.div>
     </section>
   );

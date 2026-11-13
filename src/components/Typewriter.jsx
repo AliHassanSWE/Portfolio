@@ -7,7 +7,8 @@ const Typewriter = ({ text }) => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.03 },
+      
+      transition: { staggerChildren: 0.025 }, 
     },
   };
   
