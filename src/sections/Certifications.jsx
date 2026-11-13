@@ -23,6 +23,27 @@ const certData = [
     date: "Completed",
     link: "#",
     tag: "BACKEND & OOP"
+  },
+  {
+    title: "Supervised Machine Learning: Regression and Classification",
+    issuer: "Stanford & DeepLearning.AI",
+    date: "Completed",
+    link: "https://www.coursera.org/account/accomplishments/verify/LQY86UI99BCG",
+    tag: "MACHINE LEARNING"
+  },
+  {
+    title: "Introduction to Front-End Development",
+    issuer: "Meta (Coursera)",
+    date: "Completed",
+    link: "https://www.coursera.org/account/accomplishments/verify/J7ELMGP88DC0",
+    tag: "FRONTEND & UI"
+  },
+  {
+    title: "Crash Course on Python",
+    issuer: "Google (Coursera)",
+    date: "Completed",
+    link: "https://www.coursera.org/account/accomplishments/verify/AGYIZW74AYUS",
+    tag: "PROGRAMMING & SCRIPTING"
   }
 ];
 
