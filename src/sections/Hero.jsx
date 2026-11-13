@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import Typewriter from '../components/Typewriter';
 
 const GithubIcon = ({ size = 20 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 9 18v4"></path></svg>
@@ -40,9 +41,9 @@ const Hero = () => {
           Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple drop-shadow-[0_0_15px_rgba(0,255,163,0.4)]">Ali Hassan.</span>
         </motion.h1>
 
-        {/* Info Text */}
+        {/* Info Text replaced with Typewriter */}
         <motion.p variants={itemVariants} className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-8">
-          I'm a <strong className="text-white">Computer Science Student</strong> and Software Developer who loves understanding how things work under the hood. Currently focused on building robust backend systems, data structures, and practical software solutions.
+          <Typewriter text="I'm a Computer Science Student and Software Developer who loves understanding how things work under the hood. Currently focused on building robust backend systems, data structures, and practical software solutions." />
         </motion.p>
 
         {/* Animated Feature Text with Colors */}
