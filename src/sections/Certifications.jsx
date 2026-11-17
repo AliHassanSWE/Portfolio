@@ -44,6 +44,27 @@ const certData = [
     date: "Completed",
     link: "https://www.coursera.org/account/accomplishments/verify/AGYIZW74AYUS",
     tag: "PROGRAMMING & SCRIPTING"
+  },
+  {
+    title: "Using Python to Interact with the Operating System",
+    issuer: "Google (Coursera)",
+    date: "Completed",
+    link: "https://www.coursera.org/account/accomplishments/verify/CIA8DT6BDPAW",
+    tag: "AUTOMATION & OS"
+  },
+  {
+    title: "Programming with JavaScript",
+    issuer: "Meta (Coursera)",
+    date: "Completed",
+    link: "https://www.coursera.org/account/accomplishments/verify/9OJN2IQ7Q40O",
+    tag: "FRONTEND & WEB"
+  },
+  {
+    title: "Version Control",
+    issuer: "Meta (Coursera)",
+    date: "Completed",
+    link: "https://www.coursera.org/account/accomplishments/verify/ROOW9RFNKKXY",
+    tag: "DEVOPS & GIT"
   }
 ];
 
